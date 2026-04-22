@@ -1,0 +1,88 @@
+/* Base: Mobile-First (Pantallas pequeñas por defecto) */
+/* Título principal */
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+/* Formulario Mobile-First (Apilado) */
+.searchBar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.searchInput {
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--surface-color);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.searchButton {
+  padding: 1rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.searchButton:hover {
+  opacity: 0.9;
+}
+
+.recipesGrid {
+  display: grid;
+  /* 1 sola columna que ocupa todo el espacio (1fr) */
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tablet: A partir de 600px */
+@media (min-width: 600px) {
+  .searchBar {
+    flex-direction: row;
+  }
+
+  .searchInput {
+    flex-grow: 1; /* El input ocupa el espacio sobrante */
+  }
+
+  .searchButton {
+    width: auto;
+  }
+  .recipesGrid {
+    /* Pasamos a 2 columnas */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Escritorio: A partir de 1024px */
+@media (min-width: 1024px) {
+  .recipesGrid {
+    /* Pasamos a 4 columnas */
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

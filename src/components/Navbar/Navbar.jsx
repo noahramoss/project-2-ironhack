@@ -1,36 +1,51 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import logoApp from "../../assets/zero-waste-recipes-logo.svg";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
+  // Estado para controlar si el menú hamburguesa está abierto
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Función para alternar el menú
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  // Función para cerrar el menú al hacer clic en un enlace
+  const closeMenu = () => setIsOpen(false);
+
   return (
-    // <header> indica que es el encabezado principal del sitio o sección.
     <header className={styles.mainHeader}>
-      {/* <nav> engloba los enlaces de navegación principales */}
       <nav className={styles.navbar}>
-        {/* Usamos Link en lugar de <a> para evitar que React recargue toda la página (comportamiento SPA) */}
-        <Link to="/" aria-label="Ir a la página de inicio">
+        <Link to="/" aria-label="Ir a la página de inicio" onClick={closeMenu}>
           <img src={logoApp} alt="Logo Zero Waste" className={styles.logoImg} />
         </Link>
 
-        {/* Es una buena práctica envolver los enlaces en una lista desordenada <ul> */}
-        <ul className={styles.navbarLinks}>
+        {/* Botón Hamburguesa: Usamos un símbolo simple por ahora */}
+        <button
+          className={styles.hamburger}
+          onClick={toggleMenu}
+          aria-label="Abrir menú"
+        >
+          {isOpen ? "✕" : "☰"}
+        </button>
+
+        {/* Menú de navegación: Añadimos la clase 'open' dinámicamente */}
+        <ul className={`${styles.navbarLinks} ${isOpen ? styles.open : ""}`}>
           <li>
-            <Link to="/" className={styles.navItem}>
+            <Link to="/" className={styles.navItem} onClick={closeMenu}>
               Inicio
             </Link>
           </li>
           <li>
-            <Link to="/" className={styles.navItem}>
-              Mis Favoritos
-            </Link>
-          </li>
-          <li>
-            <Link to="/" className={styles.navItem}>
+            <Link to="/" className={styles.navItem} onClick={closeMenu}>
               Explorar
             </Link>
           </li>
-          {/* Aquí puedes añadir más <li> en el futuro (ej. Favoritos, Acerca de...) */}
+          <li>
+            <Link to="/" className={styles.navItem} onClick={closeMenu}>
+              Mis Favoritos
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

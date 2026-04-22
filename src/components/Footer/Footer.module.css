@@ -1,0 +1,23 @@
+.mainFooter {
+  background-color: var(--bg-color);
+  border-top: 1px solid var(--border-color);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  margin-top: auto; /* Separación del contenido principal */
+}
+
+.footerContent p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.apiAttribution a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.apiAttribution a:hover {
+  text-decoration: underline;
+}

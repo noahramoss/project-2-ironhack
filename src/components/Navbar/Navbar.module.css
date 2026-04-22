@@ -1,45 +1,101 @@
-/* src/components/Navbar/Navbar.module.css */
+/* --- BASE GLOBALES DEL HEADER --- */
 .mainHeader {
   background-color: var(--surface-color);
-  /* En modo oscuro, las sombras deben ser más sutiles y oscuras */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   padding: 1rem 2rem;
-  /* position: sticky;
-  top: 0; */
-  z-index: 100;
-  /* Borde inferior muy sutil para separar del contenido */
   border-bottom: 1px solid var(--border-color);
+  /* position relative es necesario para que el menú absolute se posicione debajo de él */
+  position: relative;
+  z-index: 100;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .logoImg {
-  height: 50px;
+  height: 40px;
   width: auto;
-  /* Si tu SVG es oscuro y no se ve bien sobre el fondo negro, 
-     puedes descomentar la siguiente línea para invertir sus colores temporalmente */
-  /* filter: invert(1) hue-rotate(180deg); */
+}
+
+/* --- MOBILE-FIRST (Estilos por defecto para móvil) --- */
+
+.hamburger {
+  display: block; /* Visible en móvil */
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.hamburger:hover {
+  color: var(--primary-color);
 }
 
 .navbarLinks {
-  display: flex;
+  /* Oculto por defecto en móvil */
+  display: none;
+  flex-direction: column;
+  flex-basis: 100%; /* Fuerza a que salte a la siguiente línea del flex-wrap */
+  margin-top: 1rem; /* Separación entre el logo/hamburguesa y la lista */
   list-style: none;
-  gap: 2rem;
+  /* IMPORTANTE: Borra las propiedades position, top, left, width y box-shadow que tenías antes */
+}
+
+/* Clase que se activa mediante JavaScript (isOpen) */
+.navbarLinks.open {
+  display: flex;
+}
+
+.navbarLinks li {
+  text-align: center;
 }
 
 .navItem {
   text-decoration: none;
   color: var(--text-color);
   font-weight: 500;
-  transition: color 0.2s ease;
+  display: block; /* Hace que toda la franja sea clicable en móvil */
+  padding: 1rem 2rem;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .navItem:hover {
   color: var(--primary-color);
+  background-color: var(--bg-color); /* Ligero cambio de fondo al tocar */
+}
+
+/* --- ESCRITORIO Y TABLET (A partir de 768px) --- */
+
+@media (min-width: 768px) {
+  .hamburger {
+    /* Ocultamos el botón en pantallas grandes */
+    display: none;
+  }
+
+  .navbarLinks {
+    /* Mostramos los enlaces siempre en escritorio, sin importar la clase 'open' */
+    display: flex;
+    flex-direction: row;
+    flex-basis: auto; /* Reseteamos para que ocupe solo el espacio de sus links */
+    margin-top: 0; /* Quitamos el margen superior que pusimos en el móvil */
+    gap: 2rem;
+  }
+
+  .navItem {
+    padding: 0; /* Quitamos el padding grueso del móvil */
+  }
+
+  .navItem:hover {
+    background-color: transparent; /* Quitamos el fondo del hover en escritorio */
+  }
 }

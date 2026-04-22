@@ -1,0 +1,104 @@
+/* src/pages/RecipeDetailPage/RecipeDetailPage.module.css */
+
+.pageContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  width: 100%;
+}
+
+/* Botón de volver con flecha */
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.backButton:hover {
+  color: var(--primary-color);
+}
+
+/* Imagen principal */
+.heroImage {
+  width: 100%;
+  height: 300px; /* En móvil */
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* Metadatos (Tiempo, raciones) */
+.metaInfo {
+  display: flex;
+  gap: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+/* Lista de ingredientes estilo "Zero Waste" */
+.ingredientsList {
+  list-style: none;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.ingredientsList li {
+  background-color: var(--surface-color);
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  color: var(--text-color);
+  transition: transform 0.2s ease;
+}
+
+/* Ingredientes que YA TENEMOS (Borde Verde) */
+.haveIngredient {
+  border-left: 4px solid var(--primary-color);
+}
+
+/* Ingredientes que NOS FALTAN (Borde Rojo) */
+.missingIngredient {
+  border-left: 4px solid #ef5350; /* Un rojo agradable */
+}
+
+/* Instrucciones */
+.instructions {
+  line-height: 1.7;
+  color: var(--text-color);
+  background-color: var(--surface-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+/* Pantallas más grandes */
+@media (min-width: 768px) {
+  .heroImage {
+    height: 400px;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+}

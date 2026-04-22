@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  min-height: 60vh;
+}
+
+.errorCode {
+  font-size: 6rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.message {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+.homeButton {
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+}
+
+.homeButton:hover {
+  opacity: 0.9;
+}
