@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useContext } from "react";
-import { RecipeContext } from "../context/RecipeContext";
+import { RecipeContext } from "../../context/RecipeContext";
 
-export default function RecipeDetail() {
+export default function RecipeDetailPage() {
   const { id } = useParams();
   const { recipes, loading } = useContext(RecipeContext);
   const recipe = recipes.find((item) => item.id === parseInt(id));

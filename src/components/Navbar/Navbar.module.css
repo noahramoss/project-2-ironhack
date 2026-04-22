@@ -1,0 +1,45 @@
+/* src/components/Navbar/Navbar.module.css */
+.mainHeader {
+  background-color: var(--surface-color);
+  /* En modo oscuro, las sombras deben ser más sutiles y oscuras */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  padding: 1rem 2rem;
+  /* position: sticky;
+  top: 0; */
+  z-index: 100;
+  /* Borde inferior muy sutil para separar del contenido */
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logoImg {
+  height: 50px;
+  width: auto;
+  /* Si tu SVG es oscuro y no se ve bien sobre el fondo negro, 
+     puedes descomentar la siguiente línea para invertir sus colores temporalmente */
+  /* filter: invert(1) hue-rotate(180deg); */
+}
+
+.navbarLinks {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navItem {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navItem:hover {
+  color: var(--primary-color);
+}

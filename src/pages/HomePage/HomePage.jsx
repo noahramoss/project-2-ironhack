@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState, useMemo } from "react";
-import { RecipeContext } from "../context/RecipeContext";
-import RecipeCard from "../components/RecipeCard";
+import { RecipeContext } from "../../context/RecipeContext";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 
-export default function Home() {
+export default function HomePage() {
   const { recipes, searchRecipes } = useContext(RecipeContext);
   const [searchInput, setSearchInput] = useState("");
 

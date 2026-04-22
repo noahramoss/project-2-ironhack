@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import RecipeDetail from "./pages/RecipeDetail";
-import NotFoundPage from "./pages/NotFoundPage";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage/HomePage";
+import RecipeDetailPage from "./pages/RecipeDetailPage/RecipeDetailPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/recipe/:id" element={<RecipeDetail />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/recipe/:id" element={<RecipeDetailPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
