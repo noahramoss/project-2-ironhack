@@ -37,13 +37,22 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/" className={styles.navItem} onClick={closeMenu}>
-              Explorar
+            <Link to="/daily" className={styles.navItem} onClick={closeMenu}>
+              Receta del Día
             </Link>
           </li>
           <li>
-            <Link to="/" className={styles.navItem} onClick={closeMenu}>
+            <Link
+              to="/favorites"
+              className={styles.navItem}
+              onClick={closeMenu}
+            >
               Mis Favoritos
+            </Link>
+          </li>
+          <li>
+            <Link to="/history" className={styles.navItem} onClick={closeMenu}>
+              Historial
             </Link>
           </li>
         </ul>

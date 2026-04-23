@@ -1,0 +1,48 @@
+/* Base: Mobile-First */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+.recipesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.emptyState {
+  text-align: center;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  padding: 4rem 1rem;
+  background-color: var(--surface-color);
+  border-radius: 12px;
+  border: 1px dashed var(--border-color);
+  margin: 0 1.5rem;
+}
+
+/* Tablet: A partir de 600px */
+@media (min-width: 600px) {
+  .recipesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Escritorio: A partir de 1024px */
+@media (min-width: 1024px) {
+  .recipesGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

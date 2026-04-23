@@ -1,0 +1,54 @@
+/* FavoritesPage.module.css */
+
+/* Base: Mobile-First (Pantallas pequeñas por defecto) */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  /* El padding general se maneja dentro de recipesGrid igual que en el Home */
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+.recipesGrid {
+  display: grid;
+  /* 1 sola columna que ocupa todo el espacio (1fr) */
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.emptyState {
+  text-align: center;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  padding: 4rem 1rem;
+  background-color: var(--surface-color);
+  border-radius: 12px;
+  border: 1px dashed var(--border-color);
+  margin: 0 1.5rem; /* Para que no se pegue a los bordes en móvil */
+}
+
+/* Tablet: A partir de 600px */
+@media (min-width: 600px) {
+  .recipesGrid {
+    /* Pasamos a 2 columnas */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Escritorio: A partir de 1024px */
+@media (min-width: 1024px) {
+  .recipesGrid {
+    /* Pasamos a 4 columnas */
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

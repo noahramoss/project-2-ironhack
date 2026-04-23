@@ -1,3 +1,5 @@
+/* RecipeCard.module.css */
+
 .card {
   background-color: var(--surface-color);
   border-radius: 12px;
@@ -20,6 +22,12 @@
   border-color: var(--primary-color);
 }
 
+/* Contenedor relativo para que la etiqueta y el botón (absolute) se queden dentro */
+.imageContainer {
+  position: relative;
+  width: 100%;
+}
+
 .image {
   width: 100%;
   height: 200px;
@@ -27,17 +35,11 @@
   display: block;
 }
 
-/* Contenedor relativo para que la etiqueta (absolute) se quede dentro de la imagen */
-.imageContainer {
-  position: relative;
-  width: 100%;
-}
-
-/* Estilos fijos de la etiqueta. El fondo (background-color) se lo inyecta React */
+/* Etiqueta del semáforo: movida abajo a la izquierda para no pisar el botón */
 .badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  bottom: 10px;
+  left: 10px;
   color: #ffffff;
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
@@ -45,6 +47,38 @@
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   z-index: 10;
+}
+
+/* NUEVO: Botón de favoritos arriba a la derecha */
+.favoriteButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.85
+  ); /* Fondo semitransparente elegante */
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+  z-index: 10;
+}
+
+.favoriteButton:hover {
+  transform: scale(1.1);
+  background-color: #ffffff;
 }
 
 .title {

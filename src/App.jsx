@@ -2,6 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import RecipeDetailPage from "./pages/RecipeDetailPage/RecipeDetailPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import FavoritesPage from "./pages/FavoritesPage/FavoritePage";
+import HistoryPage from "./pages/HistoryPage/HistoryPage";
+import DailyRecipePage from "./pages/DailyRecipePage/DailyRecipePage";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
@@ -16,6 +19,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/recipe/:id" element={<RecipeDetailPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/daily" element={<DailyRecipePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
