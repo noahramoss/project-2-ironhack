@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useMemo } from "react";
+import { useContext, useState, useMemo } from "react";
 import { RecipeContext } from "../../context/RecipeContext";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import Loader from "../../components/Loader/Loader";
@@ -9,16 +9,15 @@ export default function HomePage() {
   const [searchInput, setSearchInput] = useState("");
 
   const sortedRecipes = useMemo(() => {
-    // Aquí copiaremos el array original y lo ordenaremos
-    // de menor a mayor cantidad de ingredientes faltantes.
-    return [...recipes].sort(
-      (a, b) => a.missedIngredientCount - b.missedIngredientCount,
-    );
-  }, [recipes]); // El array de dependencias: solo vuelve a calcular si 'recipes' cambia
-
-  useEffect(() => {
-    searchRecipes();
-  }, []);
+    return [...recipes].sort((a, b) => {
+      // 1ª Prioridad: Mayor cantidad de ingredientes que YA TENEMOS (Descendente)
+      if (b.usedIngredientCount !== a.usedIngredientCount) {
+        return b.usedIngredientCount - a.usedIngredientCount;
+      }
+      // 2ª Prioridad (Desempate): Menor cantidad de ingredientes FALTANTES (Ascendente)
+      return a.missedIngredientCount - b.missedIngredientCount;
+    });
+  }, [recipes]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -32,7 +31,7 @@ export default function HomePage() {
       <form className={styles.searchBar} onSubmit={handleSearch}>
         <input
           type="text"
-          placeholder="Ej: tomate, queso, cebolla..."
+          placeholder="E.g: tomato, cheese, onion..."
           className={styles.searchInput}
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
@@ -43,7 +42,7 @@ export default function HomePage() {
       </form>
       {loading ? (
         <Loader message="Buscando recetas Zero Waste..." />
-      ) : (
+      ) : sortedRecipes.length > 0 ? (
         <section className={styles.recipesGrid}>
           {sortedRecipes.map((recipe) => (
             <RecipeCard
@@ -55,6 +54,13 @@ export default function HomePage() {
             ></RecipeCard>
           ))}
         </section>
+      ) : (
+        <div className={styles.emptyState}>
+          <p>
+            🥗 Introduce los ingredientes que tienes en tu nevera para descubrir
+            recetas increíbles.
+          </p>
+        </div>
       )}
     </main>
   );

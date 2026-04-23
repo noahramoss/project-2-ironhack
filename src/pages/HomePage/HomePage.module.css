@@ -60,6 +60,13 @@
   margin: 0 auto;
 }
 
+.emptyState {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  padding: 4rem 1rem;
+}
+
 /* Tablet: A partir de 600px */
 @media (min-width: 600px) {
   .searchBar {
