@@ -84,12 +84,33 @@
 }
 
 /* Instrucciones */
+/* El contenedor principal de las instrucciones */
 .instructions {
-  line-height: 1.7;
-  color: var(--text-color);
-  background-color: var(--surface-color);
-  padding: 1.5rem;
+  background-color: var(--surface-color); /* Tu color de fondo oscuro */
+  padding: 1.5rem 2rem; /* Padding generoso a los lados */
   border-radius: 12px;
+  color: var(--text-color);
+}
+
+/* Apuntamos directamente a las listas que inyecta la API */
+.instructions ol,
+.instructions ul {
+  /* Le damos un margen izquierdo fijo suficiente para que quepan dobles y triples dígitos */
+  padding-left: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Estilizamos cada paso (li) inyectado por la API */
+.instructions li {
+  margin-bottom: 0.8rem; /* Separación vertical entre pasos */
+  line-height: 1.6; /* Mejora la legibilidad en textos largos */
+  padding-left: 0.5rem; /* Un pequeño respiro entre el número y el texto */
+}
+
+/* Quitamos el margen del último elemento para que no quede espacio extra abajo */
+.instructions li:last-child {
+  margin-bottom: 0;
 }
 
 /* Pantallas más grandes */
