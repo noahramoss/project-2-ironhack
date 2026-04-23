@@ -53,7 +53,7 @@ export function RecipeProvider({ children }) {
 
       // Si no era la primera, hacemos la lógica normal
       const filteredHistory = prev.filter((r) => r.id !== recipe.id);
-      return [recipe, ...filteredHistory].slice(0, 5);
+      return [recipe, ...filteredHistory].slice(0, 8);
     });
   };
 

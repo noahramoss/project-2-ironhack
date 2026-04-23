@@ -40,6 +40,18 @@ export default function HomePage() {
           Buscar Recetas
         </button>
       </form>
+      {/* NUEVO: Aviso de idioma para el usuario */}
+      <p
+        style={{
+          textAlign: "center",
+          fontSize: "0.9rem",
+          color: "var(--text-secondary)",
+          marginTop: "-2rem",
+        }}
+      >
+        * Por favor, introduce los ingredientes en <strong>inglés</strong>{" "}
+        separados por comas.
+      </p>
       {loading ? (
         <Loader message="Buscando recetas Zero Waste..." />
       ) : sortedRecipes.length > 0 ? (
