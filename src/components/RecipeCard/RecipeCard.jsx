@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { RecipeContext } from "../../context/RecipeContext";
 import styles from "./RecipeCard.module.css";
 
@@ -14,6 +14,8 @@ export default function RecipeCard({
 
   // 2. Comprobamos si esta tarjeta es favorita
   const isFavorite = favorites.some((fav) => fav.id === id);
+
+  const location = useLocation();
 
   // 3. Manejador del corazón (preventDefault para no viajar a la receta)
   const handleFavoriteClick = (e) => {
@@ -31,7 +33,11 @@ export default function RecipeCard({
   const badgeInfo = getBadgeInfo(missedIngredientCount);
 
   return (
-    <Link to={`/recipe/${id}`} className={styles.card}>
+    <Link
+      to={`/recipe/${id}`}
+      state={{ from: location.pathname }}
+      className={styles.card}
+    >
       <div className={styles.imageContainer}>
         <img src={image} alt={`Plato: ${title}`} className={styles.image} />
 
@@ -43,7 +49,7 @@ export default function RecipeCard({
           {badgeInfo.text}
         </span>
 
-        {/* El NUEVO botón de favoritos (Arriba a la derecha) */}
+        {/* Botón de favoritos (Arriba a la derecha) */}
         <button
           className={styles.favoriteButton}
           onClick={handleFavoriteClick}

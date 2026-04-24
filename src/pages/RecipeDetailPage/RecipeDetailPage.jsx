@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { useContext, useEffect, useMemo } from "react";
 import { RecipeContext } from "../../context/RecipeContext";
 import { useRecipeDetail } from "../../hooks/useRecipeDetail";
@@ -9,6 +9,9 @@ export default function RecipeDetailPage() {
   const { id } = useParams();
   const { recipes, history, favorites, addToHistory } =
     useContext(RecipeContext);
+
+  const location = useLocation();
+  const goBackUrl = location.state?.from || "/";
 
   // useMemo memoriza el objeto y evita que cambie en cada renderizado
   const savedDailyData = useMemo(() => {
@@ -47,8 +50,8 @@ export default function RecipeDetailPage() {
     return (
       <div className={styles.pageContainer}>
         <h2 className={styles.title}>Receta no encontrada</h2>
-        <Link to="/" className={styles.backButton}>
-          &larr; Volver al inicio
+        <Link to={goBackUrl} className={styles.backButton}>
+          &larr; Volver atrás
         </Link>
       </div>
     );
@@ -56,8 +59,8 @@ export default function RecipeDetailPage() {
 
   return (
     <div className={styles.pageContainer}>
-      <Link to="/" className={styles.backButton}>
-        &larr; Volver a resultados
+      <Link to={goBackUrl} className={styles.backButton}>
+        &larr; Volver atrás
       </Link>
 
       <img src={recipe.image} alt={recipe.title} className={styles.heroImage} />
